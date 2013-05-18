@@ -1,4 +1,4 @@
-SchemaForms
-===========
+Schema Forms
+============
 
-JSON Schema to Forms using AngularJS.
+GENERATES FORMS USING JSON SCHEMAS, ON FORM SUBMIT JSON IS POSTED
