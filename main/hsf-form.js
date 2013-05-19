@@ -3,7 +3,7 @@ var module = angular.module('hsf', []);
 module.directive('hsfForm', function factory() {
 	return {
 		template:	'<div>'
-				+		'<div hsf-type-object schema="schema" result="result" handler="handler"/>'
+				+		'<div hsf-type-object schema="schema" model="result" handler="handler"/>'
 				+	'</div>'
 				+	'<a class="btn btn-primary" ng-click="submit()">Submit</a>',
 		transclude: true,

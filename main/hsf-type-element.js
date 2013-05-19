@@ -5,7 +5,7 @@ module.directive('hsfTypeElement', function factory() {
 				+			'<div><div hsf-input-string model="model[schema.name]" schema="schema"></div></div>'
 				+		'</div>'
 				+		'<div ng-switch-when="choice">'
-				+			'<div><div hsf-type-choice model="model[schema.name]" schema="schema"></div></div>'
+				+			'<div><div hsf-type-choice model="model" schema="schema"></div></div>'
 				+		'</div>'
 				+	'</div>',
 		transclude: true,
