@@ -4,19 +4,21 @@
 		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
 		<script src="main/hsf-form.js"></script>
+		<script src="main/hsf-type-element.js"></script>
 		<script src="main/hsf-type-object.js"></script>
+		<script src="main/hsf-type-choice.js"></script>
 		<script src="main/hsf-input-string.js"></script>
 		<script>
 			function Test($scope){
 
-				$scope.theschema = {
-					'x': {
-						type: 'string',
-					},
-					'y': {
-						type: 'string'
-					}
-				};
+				$scope.theschema = [
+					{ type: 'string', name: 'x' },
+					{ type: 'string', name: 'y' },
+					{ type: 'choice', choices: [
+						{ type: 'string', name: 'choice_a' },
+						{ type: 'string', name: 'choice_b' }
+					]}
+				];
 
 				$scope.thehandler = function(object){
 					console.log(object);

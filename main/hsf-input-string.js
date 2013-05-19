@@ -1,6 +1,7 @@
 module.directive('hsfInputString', function factory() {
 	return {
 		template:	'<div>'
+				+		'<p>{{ schema.name }}</p>'
 				+		'<input type="text"/>'
 				+	'</div>',
 		transclude: true,
@@ -10,6 +11,8 @@ module.directive('hsfInputString', function factory() {
 			schema: '='
 		},
 		controller: function($scope){
+			console.log('htm:schema', $scope.schema);
+			console.log('htm:model', $scope.model);
 		},
 		link: function postLink($scope, $element, $attrs){
 			var input = $element.find('input');

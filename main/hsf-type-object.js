@@ -1,8 +1,7 @@
 module.directive('hsfTypeObject', function factory() {
 	return {
-		template:	'<div data-ng-repeat="(key, value) in schema">'
-				+		'<p>{{ key }}</p>'
-				+		'<div hsf-input-string model="result[key]" schema="schema[key]"/>'
+		template:	'<div data-ng-repeat="(index, content) in schema">'
+				+		'<div hsf-type-element schema="schema[index]"/>'
 				+	'</div>',
 		transclude: true,
 		restrict: 'A',
