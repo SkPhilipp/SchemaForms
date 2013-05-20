@@ -1,32 +1,28 @@
-module.directive('hsfTypeElement', function factory() {
+module.directive('hsfTypeElement', function factory($compile) {
+
+	var mapping = {
+		'string': '<div><div hsf-input-string model="model[schema.name]" schema="schema"></div></div>',
+		'choice': '<div><div hsf-type-choice model="model" schema="schema"></div></div>',
+		'object': '<div><div hsf-type-object model="model[schema.name]" schema="schema"></div></div>'
+	};
+
 	return {
-		template:	'<div ng-switch on="schema.type">'
-				+		'<div ng-switch-when="string">'
-				+			'<div><div hsf-input-string model="model[schema.name]" schema="schema"></div></div>'
-				+		'</div>'
-				+		'<div ng-switch-when="choice">'
-				+			'<div><div hsf-type-choice model="model" schema="schema"></div></div>'
-				+		'</div>'
-				+	'</div>',
-		transclude: true,
 		restrict: 'A',
-        scope: {
+		scope: {
 			schema: '=',
 			model: '='
 		},
 		controller: function($scope){
-			console.log('hte:schema:', $scope.schema);
-			if($scope.schema.type == 'array'){
-				console.log('initializing array');
-				$scope.model = [];
-			}
-			if($scope.schema.type == 'object'){
-				console.log('initializing object');
-				$scope.model = {};
-			}
+			console.log("element:", $scope.schema);
 		},
-		link: function postLink($scope, $element, $attrs){
-			/* ... */
+		compile: function($element){
+			var contents = $element.contents().remove();
+			var compiledContents;
+			return function($scope, $element){
+				compiled = $compile(mapping[$scope.schema.type])($scope);
+				$element.append(compiled);
+			};
 		}
 	};
+
 });

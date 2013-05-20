@@ -3,9 +3,11 @@ var module = angular.module('hsf', []);
 module.directive('hsfForm', function factory() {
 	return {
 		template:	'<div>'
-				+		'<div hsf-type-object schema="schema" model="result" handler="handler"/>'
+				+		'<div data-ng-repeat="(index, content) in schema">'
+				+			'<div hsf-type-element schema="content" model="result"/>'
+				+		'</div>'
 				+	'</div>'
-				+	'<a class="btn btn-primary" ng-click="submit()">Submit</a>',
+				+	'<a class="btn btn-primary" ng-click="handler(result)">Submit</a>',
 		transclude: true,
 		restrict: 'A',
         scope: {
@@ -13,12 +15,10 @@ module.directive('hsfForm', function factory() {
 			handler: '='
 		},
 		controller: function($scope){
-			$scope.submit = function(){
-				console.log($scope.result);
-			};
+			console.log("form:", $scope.schema);
+			$scope.result = {};
 		},
 		link: function postLink($scope, $element, $attrs){
-			/* ... */
 		}
 	};
 });

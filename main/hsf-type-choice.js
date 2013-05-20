@@ -15,8 +15,7 @@ module.directive('hsfTypeChoice', function factory($compile) {
 			model: '='
 		},
 		controller: function($scope){
-			console.log('htc:schema', $scope.schema);
-			console.log('htc:model', $scope.model);
+			console.log("choice:", $scope.schema);
 		},
 		link: function postLink($scope, $element, $attrs){
 			var select = $element.find('select');

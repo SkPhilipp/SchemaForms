@@ -11,12 +11,16 @@
 		<script>
 			function Test($scope){
 
+			
 				$scope.theschema = [
-					{ type: 'string', name: 'x' },
-					{ type: 'string', name: 'y' },
+					{ type: 'string', name: 'a' },
+					{ type: 'string', name: 'b' },
 					{ type: 'choice', choices: [
 						{ type: 'string', name: 'choice_a' },
-						{ type: 'string', name: 'choice_b' }
+						{ type: 'object', name: 'choice_b', fields: [
+							{ type: 'string', name: 'x' },
+							{ type: 'string', name: 'y' }
+						]}
 					]}
 				];
 
@@ -31,3 +35,5 @@
 		<div hsf-form schema="theschema" handler="thehandler"/>
 	</body>
 </html>
+
+
