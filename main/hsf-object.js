@@ -1,7 +1,7 @@
-module.directive('hsfTypeObject', function factory() {
+module.directive('hsfObject', function factory() {
 	return {
 		template:	'<div data-ng-repeat="(index, content) in schema.fields">'
-				+		'<div hsf-type-element model="model" schema="content"/>'
+				+		'<div hsf-element model="model" schema="content"/>'
 				+	'</div>',
 		transclude: true,
 		restrict: 'A',

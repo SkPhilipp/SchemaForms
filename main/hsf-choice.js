@@ -1,4 +1,4 @@
-module.directive('hsfTypeChoice', function factory($compile) {
+module.directive('hsfChoice', function factory($compile) {
 	return {
 		template:	'<div>'
 				+		'<select>'
@@ -31,7 +31,7 @@ module.directive('hsfTypeChoice', function factory($compile) {
 				var container = $element.find('span');
 				container.children().remove();
 				if($scope.chosen >= 0){
-					var chosen_el = $compile('<div hsf-type-element schema="schema.choices[chosen]" model="model"/>')($scope);
+					var chosen_el = $compile('<div hsf-element schema="schema.choices[chosen]" model="model"/>')($scope);
 					container.append(chosen_el);
 				}
 				$scope.$apply();

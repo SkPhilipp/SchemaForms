@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>HSF Spec Runner</title>
+		<link rel="shortcut icon" type="image/png" href="lib/jasmine-1.3.1/jasmine_favicon.png">
+		<link rel="stylesheet" type="text/css" href="lib/jasmine-1.3.1/jasmine.css">
+		<script type="text/javascript" src="lib/jasmine-1.3.1/jasmine.js"></script>
+		<script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-html.js"></script>
+		<!-- lib -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+		<!-- main -->
+		<script src="main/hsf-form.js"></script>
+		<script src="main/hsf-element.js"></script>
+		<script src="main/hsf-object.js"></script>
+		<script src="main/hsf-array.js"></script>
+		<script src="main/hsf-choice.js"></script>
+		<script src="main/hsf-input-string.js"></script>
+		<!-- spec -->
+		<script src="spec/hsf-array-spec.js"></script>
+		<script src="spec/hsf-choice-spec.js"></script>
+		<script src="spec/hsf-form-spec.js"></script>
+		<script src="spec/hsf-input-file-spec.js"></script>
+		<script src="spec/hsf-input-string-spec.js"></script>
+		<script src="spec/hsf-object-spec.js"></script>
+		<!-- jasmine -->
+		<script type="text/javascript">
+			(function() {
+				var jasmineEnv = jasmine.getEnv();
+				jasmineEnv.updateInterval = 1000;
+
+				var htmlReporter = new jasmine.HtmlReporter();
+
+				jasmineEnv.addReporter(htmlReporter);
+
+				jasmineEnv.specFilter = function(spec) {
+					return htmlReporter.specFilter(spec);
+				};
+
+				var currentWindowOnload = window.onload;
+
+				window.onload = function() {
+					if (currentWindowOnload) {
+						currentWindowOnload();
+					}
+					execJasmine();
+				};
+
+				function execJasmine() {
+					jasmineEnv.execute();
+				}
+
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

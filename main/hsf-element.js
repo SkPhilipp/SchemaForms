@@ -1,9 +1,9 @@
-module.directive('hsfTypeElement', function factory($compile) {
+module.directive('hsfElement', function factory($compile) {
 
 	var mapping = {
-		'string': '<div><div hsf-input-string model="model[schema.name]" schema="schema"></div></div>',
-		'choice': '<div><div hsf-type-choice model="model" schema="schema"></div></div>',
-		'object': '<div><div hsf-type-object model="model[schema.name]" schema="schema"></div></div>'
+		'string': '<div hsf-input-string model="model[schema.name]" schema="schema"></div>',
+		'choice': '<div hsf-choice model="model" schema="schema"></div>',
+		'object': '<div hsf-object model="model[schema.name]" schema="schema"></div>'
 	};
 
 	return {
@@ -13,7 +13,6 @@ module.directive('hsfTypeElement', function factory($compile) {
 			model: '='
 		},
 		controller: function($scope){
-			console.log("element:", $scope.schema);
 		},
 		compile: function($element){
 			var contents = $element.contents().remove();
