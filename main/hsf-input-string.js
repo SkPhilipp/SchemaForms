@@ -1,8 +1,10 @@
 module.directive('hsfInputString', function factory() {
 	return {
-		template:	'<div>'
-				+		'<p>{{ schema.name }}</p>'
-				+		'<input type="text"/>'
+		template:	'<div class="control-group">'
+				+		'<label class="control-label">{{ schema.title || schema.name }}</label>'
+				+		'<div class="controls">'
+				+			'<input type="text"/>'
+				+		'</div>'
 				+	'</div>',
 		transclude: true,
 		restrict: 'A',

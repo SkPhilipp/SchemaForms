@@ -11,18 +11,22 @@
 		<script src="main/hsf-input-string.js"></script>
 		<script src="main/hsf-input-file.js"></script>
 		<script>
-
+var x;
 			function Test($scope){
 
-				$scope.theschema = [
-					{ type: 'array', name: 'b', kids:
-					{ type: 'array', kids:
-						{type: 'string' }
-					}}
+				$scope.theschema = [{ type: 'array', name: 'b', title: 'Outer Array', kids:
+	{ type: 'array', title: 'Inner Array', min: 2, max: 4, kids:
+		{ type: 'object', fields: [
+			{ type: 'string', name: 'x' },
+			{ type: 'string', name: 'y' },
+			{ type: 'string', name: 'z' }
+		]}
+	}
+}
 				];
 
 
-				$scope.thehandler = function(object){
+				$scope.thehandler = function(object){x = object;
 					console.log(object);
 				};
 
@@ -33,5 +37,3 @@
 		<div hsf-form schema="theschema" handler="thehandler"/>
 	</body>
 </html>
-
-

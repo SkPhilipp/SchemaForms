@@ -1,9 +1,12 @@
 module.directive('hsfArray', function factory($compile) {
 	return {
-		template:	'<div>'
-				+		'<a class="btn" ng-click="add_element()">Add</a>'
-				+		'<a class="btn" ng-click="remove_element()">Remove</a>'
-				+	'</div>',
+		template:	'<fieldset>'
+				+		'<legend>'
+				+		'<button class="btn" ng-click="add_element()" ng-disabled="length == max">Add</button> '
+				+		'<button class="btn" ng-click="remove_element()" ng-disabled="length == min">Remove</button> '
+				+		'{{ schema.title }} '
+				+		'</legend>'
+				+	'</fieldset>',
 		restrict: 'A',
         scope: {
 			schema: '=',
@@ -11,23 +14,28 @@ module.directive('hsfArray', function factory($compile) {
 		},
 		controller: function($scope, $element){
 			console.log("array:", $scope.schema);
-			console.log("element:", $element);
-			var length = 0;
+			$scope.min = $scope.schema.min || 0;
+			$scope.max = $scope.schema.max || Infinity;
+			$scope.length = 0;
 			$scope.model = [];
 
 			$scope.add_element = function(){
 				// here we compile the template, with a static reference to the model element
-				var template = '<div hsf-element model="model[' + length + ']" schema="schema.kids"/>';
+				var template = '<div hsf-element model="model[' + $scope.length + ']" schema="schema.kids"/>';
 				var compiled = $compile(template)($scope);
 				$element.append(compiled);
-				length++;
+				$scope.length++;
 			};
 
 			$scope.remove_element = function(){
 				var children = $element.children();
 				children[children.length - 1].remove();
-				length--;
+				$scope.length--;
 			};
+
+			while($scope.length < $scope.min){
+				$scope.add_element();
+			}
 
 		},
 		link: function postLink($scope, $element, $attrs){

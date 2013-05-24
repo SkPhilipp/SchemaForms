@@ -2,12 +2,6 @@ describe("array directive", function() {
 
 	describe("array form containing strings", function() {
 
-		// before each
-		//	$scope.theschema = { type: 'array', kids:
-		//		{ type: 'string' }
-		//	};
-		//	render
-
 		it("creates a fieldset, containing add and remove buttons", function() {
 			expect(true).toBe(true);
 		});

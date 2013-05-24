@@ -2,12 +2,12 @@ var module = angular.module('hsf', []);
 
 module.directive('hsfForm', function factory() {
 	return {
-		template:	'<div>'
+		template:	'<div class="form-horizontal">'
 				+		'<div data-ng-repeat="(index, content) in schema">'
 				+			'<div hsf-element schema="content" model="result"/>'
 				+		'</div>'
-				+	'</div>'
-				+	'<a class="btn btn-primary" ng-click="handler(result)">Submit</a>',
+				+		'<a class="btn btn-primary" ng-click="handler(result)">Submit</a>'
+				+	'</div>',
 		transclude: true,
 		restrict: 'A',
         scope: {
