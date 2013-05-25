@@ -1,15 +1,25 @@
-Hileco Schema Forms : HSF
+HSF : Hileco Schema Forms
 =========================
 
-GENERATES FORMS USING SCHEMAS, ON FORM SUBMIT JSON IS POSTED
+GENERATES BOOTSTRAP COMPATIBLE FORMS FROM SCHEMAS, THE FORM SENDS JSON MATCHING THE SCHEMA
 
 Testing
 -------
-For testing we are using Jasmine, see [SpecRunner.html](./SpecRunner.html)
+	cd SchemaForms/config
+	karma start
 
 Schema
 ------
 The schema format is very simple, much like the JSON schema draft, however not equal, the schema
 used here is more readable and easier to maintain, and most important of all; easier to make forms with.
 
-For now, just look in the spec, this readme must be updated later, as the schema format is under development.
+For really good examples, look under [app](/app). Here's a quick sample:
+
+
+	{ type: 'array', title: 'Inner Array', min: 2, max: 4, kids:
+		{ type: 'object', fields: [
+			{ type: 'string', name: 'x' },
+			{ type: 'string', name: 'y' },
+			{ type: 'string', name: 'z' }
+		]}
+	}
