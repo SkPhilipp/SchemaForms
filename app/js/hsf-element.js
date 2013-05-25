@@ -22,8 +22,6 @@ angular.module('hsf.directives').directive('hsfElement', function factory($compi
 			schema: '=',
 			model: '='
 		},
-		controller: function($scope){
-		},
 		compile: function($element){
 			var contents = $element.contents().remove();
 			var compiledContents;

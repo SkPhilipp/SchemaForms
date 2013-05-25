@@ -8,11 +8,13 @@
 	<body ng-controller="Demo">
 
 		<body ng-controller="Test">
-			<div hsf-form schema="theschema" handler="thehandler"/>
+			<div hsf-http-form url="'/some-url'" schema="theschema" success="successhandler" error="errorhandler"></div>
 		</body>
+		
 
 		<script src="lib/angular/angular.js"></script>
 		<script src="js/hsf-form.js"></script>
+		<script src="js/hsf-http-form.js"></script>
 		<script src="js/hsf-element.js"></script>
 		<script src="js/hsf-object.js"></script>
 		<script src="js/hsf-array.js"></script>
@@ -20,7 +22,7 @@
 		<script src="js/hsf-input-string.js"></script>
 		<script>
 
-		function Demo($scope){
+		function Demo($scope, $http){
 
 			$scope.theschema = { type: 'array', name: 'b', title: 'Outer Array', kids:
 				{ type: 'array', title: 'Inner Array', min: 2, max: 4, kids:
@@ -32,8 +34,12 @@
 				}
 			};
 
-			$scope.thehandler = function(object){
-				console.log(object);
+			$scope.successhandler = function(data, status, headers, config) {
+				alert(":)");
+			};
+
+			$scope.errorhandler = function(data, status, headers, config) {
+				alert("Oh boy, something erred");
 			};
 
 		};

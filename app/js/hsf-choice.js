@@ -14,13 +14,9 @@ angular.module('hsf.directives').directive('hsfChoice', function factory($compil
 			schema: '=',
 			model: '='
 		},
-		controller: function($scope){
-			console.log("choice:", $scope.schema);
-		},
 		link: function postLink($scope, $element, $attrs){
 			var select = $element.find('select');
 			select.bind('change', function(event){
-				console.log(select.val());
 				// delete all choices
 				for(i in $scope.schema.choices){
 					var choice_name = $scope.schema.choices[i].name;

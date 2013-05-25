@@ -10,9 +10,6 @@ angular.module('hsf.directives').directive('hsfObject', function factory() {
 			model: '='
 		},
 		controller: function($scope){
-			console.log("object:", $scope.schema);
-		},
-		link: function postLink($scope, $element, $attrs){
 			$scope.model = {};
 		}
 	};

@@ -12,9 +12,6 @@ angular.module('hsf.directives').directive('hsfInputString', function factory() 
 			model: '=',
 			schema: '='
 		},
-		controller: function($scope){
-			console.log("string:", $scope.schema);
-		},
 		link: function postLink($scope, $element, $attrs){
 			var input = $element.find('input');
 			$scope.model = "";

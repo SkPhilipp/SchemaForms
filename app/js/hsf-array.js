@@ -13,7 +13,7 @@ angular.module('hsf.directives').directive('hsfArray', function factory($compile
 			model: '='
 		},
 		controller: function($scope, $element){
-			console.log("array:", $scope.schema);
+
 			$scope.min = $scope.schema.min || 0;
 			$scope.max = $scope.schema.max || Infinity;
 			$scope.length = 0;
@@ -37,8 +37,6 @@ angular.module('hsf.directives').directive('hsfArray', function factory($compile
 				$scope.add_element();
 			}
 
-		},
-		link: function postLink($scope, $element, $attrs){
 		}
 	};
 });
