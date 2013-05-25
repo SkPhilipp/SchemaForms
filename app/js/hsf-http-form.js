@@ -2,7 +2,7 @@ angular.module('hsf.directives').directive('hsfHttpForm', function factory() {
 	return {
 		template: '<div hsf-form schema="schema" handler="handler" enabled="enabled"/>',
 		transclude: true,
-		restrict: 'A',
+		restrict: 'E',
         scope: {
 			schema: '=',
 			url: '=',
