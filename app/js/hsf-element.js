@@ -1,4 +1,4 @@
-module.directive('hsfElement', function factory($compile) {
+angular.module('hsf.directives').directive('hsfElement', function factory($compile) {
 
 	var mapping_named = {
 		'string': '<div hsf-input-string model="model[schema.name]" schema="schema"></div>',

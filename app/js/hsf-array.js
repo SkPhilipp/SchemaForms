@@ -1,4 +1,4 @@
-module.directive('hsfArray', function factory($compile) {
+angular.module('hsf.directives').directive('hsfArray', function factory($compile) {
 	return {
 		template:	'<fieldset>'
 				+		'<legend>'

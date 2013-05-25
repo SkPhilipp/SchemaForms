@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="hsf-sample">
+	<head>
+		<meta charset="utf-8">
+		<title>HSF Demo 1</title>
+		<link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	</head>
+	<body ng-controller="Demo">
+
+		<body ng-controller="Test">
+			<div hsf-form schema="theschema" handler="thehandler"/>
+		</body>
+
+		<script src="lib/angular/angular.js"></script>
+		<script src="js/hsf-form.js"></script>
+		<script src="js/hsf-element.js"></script>
+		<script src="js/hsf-object.js"></script>
+		<script src="js/hsf-array.js"></script>
+		<script src="js/hsf-choice.js"></script>
+		<script src="js/hsf-input-string.js"></script>
+		<script>
+
+		function Demo($scope){
+
+			$scope.theschema = { type: 'array', name: 'b', title: 'Outer Array', kids:
+				{ type: 'array', title: 'Inner Array', min: 2, max: 4, kids:
+					{ type: 'object', fields: [
+						{ type: 'string', name: 'x' },
+						{ type: 'string', name: 'y' },
+						{ type: 'string', name: 'z' }
+					]}
+				}
+			};
+
+			$scope.thehandler = function(object){
+				console.log(object);
+			};
+
+		};
+
+		angular.module('hsf-sample', ['hsf.directives']);
+
+		</script>
+	</body>
+</html>

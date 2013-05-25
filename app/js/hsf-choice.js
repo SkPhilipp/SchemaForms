@@ -1,4 +1,4 @@
-module.directive('hsfChoice', function factory($compile) {
+angular.module('hsf.directives').directive('hsfChoice', function factory($compile) {
 	return {
 		template:	'<div>'
 				+		'<select>'

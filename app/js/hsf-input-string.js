@@ -1,4 +1,4 @@
-module.directive('hsfInputString', function factory() {
+angular.module('hsf.directives').directive('hsfInputString', function factory() {
 	return {
 		template:	'<div class="control-group">'
 				+		'<label class="control-label">{{ schema.title || schema.name }}</label>'

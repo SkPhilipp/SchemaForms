@@ -1,11 +1,9 @@
-var module = angular.module('hsf', []);
+angular.module('hsf.directives', []);
 
-module.directive('hsfForm', function factory() {
+angular.module('hsf.directives').directive('hsfForm', function factory() {
 	return {
 		template:	'<div class="form-horizontal">'
-				+		'<div data-ng-repeat="(index, content) in schema">'
-				+			'<div hsf-element schema="content" model="result"/>'
-				+		'</div>'
+				+		'<div hsf-element schema="schema" model="result"></div>'
 				+		'<a class="btn btn-primary" ng-click="handler(result)">Submit</a>'
 				+	'</div>',
 		transclude: true,
@@ -17,8 +15,6 @@ module.directive('hsfForm', function factory() {
 		controller: function($scope){
 			console.log("form:", $scope.schema);
 			$scope.result = {};
-		},
-		link: function postLink($scope, $element, $attrs){
 		}
 	};
 });

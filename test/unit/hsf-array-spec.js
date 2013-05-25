@@ -1,9 +1,36 @@
 describe("array directive", function() {
 
+	beforeEach(module('hsf.directives'));
+
 	describe("array form containing strings", function() {
 
 		it("creates a fieldset, containing add and remove buttons", function() {
-			expect(true).toBe(true);
+
+			inject(function($compile, $rootScope) {
+
+				var scope = $rootScope.$new();
+				scope.theschema = { type: 'array', name: 'b', title: 'Outer Array', kids:
+					{ type: 'array', title: 'Inner Array', min: 2, max: 4, kids:
+						{ type: 'object', fields: [
+							{ type: 'string', name: 'x' },
+							{ type: 'string', name: 'y' },
+							{ type: 'string', name: 'z' }
+						]}
+					}
+				};
+
+				scope.thehandler = function(object){
+					console.log(object);
+				};
+
+				var element = $compile('<div hsf-form schema="theschema" handler="thehandler"/></div>')(scope);
+
+				expect(element.html()).toContain('fieldset');
+				expect(element.text()).toContain('Add');
+				expect(element.text()).toContain('Remove');
+
+			});
+
 		});
 
 		it("creates a form with buttons to add and remove elements", function() {
