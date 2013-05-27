@@ -7,7 +7,6 @@ angular.module('hsf.directives').directive('hsfArray', function factory($compile
 				+		'{{ schema.title }} '
 				+		'</legend>'
 				+	'</fieldset>',
-		restrict: 'A',
         scope: {
 			schema: '=',
 			model: '='

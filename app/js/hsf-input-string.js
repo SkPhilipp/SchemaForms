@@ -6,8 +6,6 @@ angular.module('hsf.directives').directive('hsfInputString', function factory() 
 				+			'<input type="text"/>'
 				+		'</div>'
 				+	'</div>',
-		transclude: true,
-		restrict: 'A',
         scope: {
 			model: '=',
 			schema: '='

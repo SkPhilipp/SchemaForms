@@ -1,15 +1,16 @@
 angular.module('hsf.directives').directive('hsfChoice', function factory($compile) {
+	console.log("CHOICE", this);
 	return {
-		template:	'<div>'
-				+		'<select>'
-				+			'<option value="">Make your choice..</option>'
-				+			'<option data-ng-repeat="choice in schema.choices" value="{{ choice.name }}">{{ choice.name }}</option>'
-				+		'<select>'
-				+		'<span>'
-				+		'</span>'
+		template:	'<div class="control-group">'
+				+		'<label class="control-label">{{ schema.title || schema.name }}</label>'
+				+		'<div class="controls">'
+				+			'<select>'
+				+				'<option value=""></option>'
+				+				'<option data-ng-repeat="choice in schema.choices" value="{{ choice.name }}">{{ choice.title || choice.name }}</option>'
+				+			'</select>'
+				+		'</div>'
+				+		'<span></span>'
 				+	'</div>',
-		transclude: true,
-		restrict: 'A',
         scope: {
 			schema: '=',
 			model: '='
@@ -23,7 +24,9 @@ angular.module('hsf.directives').directive('hsfChoice', function factory($compil
 					delete $scope.model[choice_name];
 				}
 				// set up chosen
+				// TODO: test whether this is cross browser compatible
 				$scope.chosen = select[0].selectedIndex - 1;
+				// TODO: this needs an alternative
 				var container = $element.find('span');
 				container.children().remove();
 				if($scope.chosen >= 0){
