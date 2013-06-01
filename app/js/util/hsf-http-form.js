@@ -5,11 +5,13 @@ angular.module('hsf.directives').directive('hsfHttpForm', function factory() {
 		restrict: 'EA',
         scope: {
 			schema: '=',
-			url: '=',
 			success: '=',
 			error: '='
 		},
-		controller: function($scope, $http){
+		controller: function($scope, $http, $attrs){
+			$attrs.$observe('url', function(value){
+				$scope.url = angular.isDefined(value) ? value : window.location.href;
+			});
 			// initially enable the form
 			$scope.enabled = true;
 			$scope.handler = function(data){
