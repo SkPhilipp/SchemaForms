@@ -19,6 +19,11 @@ For really good examples, look under [app](/app). Here's a quick sample:
 		]}
 	}
 
+
+This is what it'll look like as a form:
+
+![Sample schema rendered as a form](http://i.imgur.com/UXW6lsI.png)
+
 Testing
 -------
 	cd SchemaForms/config
