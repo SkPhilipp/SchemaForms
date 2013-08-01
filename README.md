@@ -1,17 +1,12 @@
-HSF : Hileco Schema Forms
-=========================
+SchemaForms
+===========
 
-GENERATES BOOTSTRAP COMPATIBLE FORMS FROM SCHEMAS, THE FORM SENDS JSON MATCHING THE SCHEMA
-
-Testing
--------
-	cd SchemaForms/config
-	karma start
+Generates Bootstrap 3 compatible forms from schemas, the from's submit will send out JSON.
 
 Schema
 ------
-The schema format is very simple, much like the JSON schema draft, however not equal, the schema
-used here is more readable and easier to maintain, and most important of all; easier to make forms with.
+The schema format is quite simple, it may remind you a bit of JSON schema (draft), however less complex and more
+focused on being able to create forms with.
 
 For really good examples, look under [app](/app). Here's a quick sample:
 
@@ -23,3 +18,9 @@ For really good examples, look under [app](/app). Here's a quick sample:
 			{ type: 'string', name: 'z' }
 		]}
 	}
+
+Testing
+-------
+	cd SchemaForms/config
+	karma start
+
