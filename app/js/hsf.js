@@ -72,7 +72,6 @@ angular.module('hsf.directives').directive('hsfElement', function factory($compi
         compile: function($element){
             $element.contents().remove();
             return function($scope, $element){
-				console.debug($scope.schema);
                 var directive = hsfElement.get($scope.schema.type);
                 var template = '<div ' + directive + ' model="model' + ( $scope.schema.name == undefined ? '' : '[schema.name]' ) + '" schema="schema"></div>';
                 var compiled = $compile(template)($scope);

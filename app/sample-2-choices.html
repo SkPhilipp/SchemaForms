@@ -2,20 +2,19 @@
 <html lang="en" ng-app="hsf-sample">
 	<head>
 		<meta charset="utf-8">
-		<title>HSF Demo 2 - Choices</title>
+		<title>HSF Demo</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<script src="lib/angular/angular.js"></script>
-		<!-- always required -->
 		<script src="js/hsf.js"></script>
-		<!-- types -->
 		<script src="js/hsf-type-object.js"></script>
 		<script src="js/hsf-type-array.js"></script>
 		<script src="js/hsf-type-choice.js"></script>
 		<script src="js/hsf-type-string.js"></script>
 		<script>
 
-			function Demo($scope, $http){
+			var app = angular.module('hsf-sample', ['hsf.directives']);
 
+			app.controller("DemoController", function($scope, $http){
 				$scope.schema = { type: 'choice', choices: [
 					{ type: 'object', title: '3D', fields: [
 						{ type: 'string', name: 'x' },
@@ -27,15 +26,16 @@
 						{ type: 'string', name: 'y' }
 					]},
 					{ type: 'choice', title:'Nested Choice', choices: [
-					{ type: 'object', title: '3D', fields: [
-						{ type: 'string', name: 'x' },
-						{ type: 'string', name: 'y' },
-						{ type: 'string', name: 'z' }
+						{ type: 'object', title: '3D', fields: [
+							{ type: 'string', name: 'x' },
+							{ type: 'string', name: 'y' },
+							{ type: 'string', name: 'z' }
+						]},
+						{ type: 'object', title: '2D', fields: [
+							{ type: 'string', name: 'x' },
+							{ type: 'string', name: 'y' }
+						]}
 					]},
-					{ type: 'object', title: '2D', fields: [
-						{ type: 'string', name: 'x' },
-						{ type: 'string', name: 'y' }
-					]}]},
 					{ type: 'string', title: 'X', name: 'x' }
 				]};
 
@@ -44,13 +44,12 @@
 				};
 
 				$scope.enabled = true;
-			};
 
-			angular.module('hsf-sample', ['hsf.directives']);
+			});
 
 		</script>
 	</head>
-	<body ng-controller="Demo">
+	<body ng-controller="DemoController">
 		<div class="container">
 			<hsf-form schema="schema" handler="handler" enabled="enabled"/>
 		</div>
