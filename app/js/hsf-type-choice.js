@@ -4,15 +4,18 @@ angular.module('hsf.directives').config(function factory(hsfElementProvider) {
 
 angular.module('hsf.directives').directive('hsfTypeChoice', function factory($compile) {
 	return {
-		template:	'<div class="form-group">'
-				+		'<label class="col-lg-3 control-label">{{ schema.title || schema.name }}</label>'
-				+		'<div class="col-lg-9">'
-				+			'<select class="form-control">'
-				+				'<option value=""></option>'
-				+				'<option data-ng-repeat="choice in schema.choices" value="{{ choice.name }}">{{ choice.title || choice.name }}</option>'
-				+			'</select>'
+		// we need a wrapper <div> tag to prevent .form-group inside .form-group messing up the style
+		template:	'<div>'
+				+		'<div class="form-group">'
+				+			'<label class="col-lg-3 control-label">{{ schema.title || schema.name }}</label>'
+				+			'<div class="col-lg-9">'
+				+				'<select class="form-control">'
+				+					'<option value=""></option>'
+				+					'<option data-ng-repeat="choice in schema.choices" value="{{ choice.name }}">{{ choice.title || choice.name }}</option>'
+				+				'</select>'
+				+			'</div>'
 				+		'</div>'
-				+		'<span></span>'
+				+	'<span></span>'
 				+	'</div>',
         scope: {
 			schema: '=',
