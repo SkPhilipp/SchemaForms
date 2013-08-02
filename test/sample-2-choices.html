@@ -1,15 +1,30 @@
 <!doctype html>
-<html lang="en" ng-app="hsf-sample">
+<html ng-app="hsf-sample">
 	<head>
 		<meta charset="utf-8">
-		<title>HSF Demo</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="lib/angular/angular.js"></script>
-		<script src="js/hsf.js"></script>
-		<script src="js/hsf-type-object.js"></script>
-		<script src="js/hsf-type-array.js"></script>
-		<script src="js/hsf-type-choice.js"></script>
-		<script src="js/hsf-type-string.js"></script>
+		
+		<!-- /lib -->
+		<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+		<script src="../lib/js/angular.js"></script>
+		<script src="../lib/js/angular-cookies.js"></script>
+		<script src="../lib/js/angular-loader.js"></script>
+		<script src="../lib/js/angular-resource.js"></script>
+		<script src="../lib/js/angular-sanitize.js"></script>
+		<script src="../lib/js/angular-scenario.js"></script>
+		<script src="../lib/js/angular-mocks.js"></script>
+
+		<!-- /src -->
+		<script src="../src/hsf.js"></script>
+		<script src="../src/hsf-type-array.js"></script>
+		<script src="../src/hsf-type-checkbox.js"></script>
+		<script src="../src/hsf-type-choice.js"></script>
+		<script src="../src/hsf-type-file.js"></script>
+		<script src="../src/hsf-type-fixed.js"></script>
+		<script src="../src/hsf-type-object.js"></script>
+		<script src="../src/hsf-type-password.js"></script>
+		<script src="../src/hsf-type-string.js"></script>
+		<script src="../src/hsf-type-text.js"></script>
+
 		<script>
 
 			var app = angular.module('hsf-sample', ['hsf.directives']);

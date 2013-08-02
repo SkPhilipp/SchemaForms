@@ -1,8 +1,12 @@
-// TODO: new $scope item: context
-
 angular.module('hsf.directives', []);
 
 angular.module('hsf', ['hsf.directives']);
+
+angular.module('hsf.directives').value('hsfElementScope', {
+	schema: '=',
+	model: '=',
+	context: '='
+});
 
 /**
  * HSF Element Provider
@@ -38,10 +42,10 @@ angular.module('hsf.directives').provider('hsfElement', function() {
 angular.module('hsf.directives').directive('hsfForm', function factory() {
     return {
         template:	'<div class="form-horizontal">'
-                +		'<div hsf-element schema="schema" model="result"></div>'
+                +		'<div hsf-element schema="schema" model="model" context="context"></div>'
                 +       '<div class="form-group">'
                 +		    '<div class="col-lg-10">'
-                +		        '<button class="btn btn-default" ng-disabled="!enabled" ng-click="handler(result)">Submit</button>'
+                +		        '<button class="btn btn-default" ng-disabled="!enabled" ng-click="handler(model)">Submit</button>'
                 +		    '</div>'
                 +	    '</div>'
                 +	'</div>',
@@ -52,7 +56,10 @@ angular.module('hsf.directives').directive('hsfForm', function factory() {
             enabled: '='
         },
         controller: function($scope){
-            $scope.result = {};
+            $scope.model = {};
+			$scope.context = {
+				path: "HSF"
+			};
             if($scope.enabled == undefined){
                 $scope.enabled = true;
             }
@@ -63,17 +70,14 @@ angular.module('hsf.directives').directive('hsfForm', function factory() {
 /**
  * HSF Element Directive
  */
-angular.module('hsf.directives').directive('hsfElement', function factory($compile, hsfElement) {
+angular.module('hsf.directives').directive('hsfElement', function factory($compile, hsfElement, hsfElementScope) {
     return {
-        scope: {
-            schema: '=',
-            model: '='
-        },
+        scope: hsfElementScope,
         compile: function($element){
             $element.contents().remove();
             return function($scope, $element){
-                var directive = hsfElement.get($scope.schema.type);
-                var template = '<div ' + directive + ' model="model' + ( $scope.schema.name == undefined ? '' : '[schema.name]' ) + '" schema="schema"></div>';
+				var directive = hsfElement.get($scope.schema.type);
+                var template = '<div ' + directive + ' model="model' + ( $scope.schema.name == undefined ? '' : '[schema.name]' ) + '" schema="schema" context="context"></div>';
                 var compiled = $compile(template)($scope);
                 $element.append(compiled);
             };

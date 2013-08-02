@@ -3,18 +3,15 @@ angular.module('hsf.directives').config(function factory(hsfElementProvider) {
 });
 
 // TODO: validation error @ reader.onerror
-angular.module('hsf.directives').directive('hsfTypeFile', function factory() {
+angular.module('hsf.directives').directive('hsfTypeFile', function factory(hsfElementScope) {
 	return {
 		template:	'<div class="form-group">'
 				+		'<label class="col-lg-3 control-label">{{ schema.title || schema.name }}</label>'
 				+		'<div class="col-lg-9">'
-                +			'<input type="file" class="form-control"/>'
+                +			'<input type="file" class="form-control" id="{{ context.path }}"/>'
 				+		'</div>'
 				+	'</div>',
-		scope: {
-			model: '=',
-			schema: '='
-		},
+		scope: hsfElementScope,
 		link: function postLink($scope, $element){
             input.bind('change', function(event){
 

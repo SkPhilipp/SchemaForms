@@ -1,3 +1,0 @@
-describe("choice directive", function() {
-
-});

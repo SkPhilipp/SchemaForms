@@ -1,19 +1,16 @@
 angular.module('hsf.directives').config(function factory(hsfElementProvider) {
-	hsfElementProvider.register('password', 'hsf-type-password');
+	hsfElementProvider.register('string', 'hsf-type-string');
 });
 
-angular.module('hsf.directives').directive('hsfTypePassword', function factory() {
+angular.module('hsf.directives').directive('hsfTypeString', function factory(hsfElementScope) {
 	return {
 		template:   '<div class="form-group">'
 				+		'<label class="col-lg-3 control-label">{{ schema.title || schema.name }}</label>'
 				+		'<div class="col-lg-9">'
-                +			'<input type="password" class="form-control"/>'
+                +			'<input type="text" class="form-control col-lg-9" id="{{ context.path }}"/>'
 				+		'</div>'
 				+	'</div>',
-        scope: {
-			model: '=',
-			schema: '='
-		},
+		scope: hsfElementScope,
 		link: function postLink($scope, $element){
 			var input = $element.find('input');
 			$scope.model = "";

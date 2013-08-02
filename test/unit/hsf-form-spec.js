@@ -1,3 +1,0 @@
-describe("form directive", function() {
-
-});

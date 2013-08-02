@@ -3,19 +3,16 @@ angular.module('hsf.directives').config(function factory(hsfElementProvider) {
 	hsfElementProvider.register('boolean', 'hsf-type-checkbox');
 });
 
-angular.module('hsf.directives').directive('hsfTypeCheckbox', function factory() {
+angular.module('hsf.directives').directive('hsfTypeCheckbox', function factory(hsfElementScope) {
 	return {
 		template:	'<div class="form-group">'
                 +       '<div class="checkbox">'
                     +       '<label>'
-                    +           '<input type="checkbox"> {{ schema.title || schema.name }}'
+                    +           '<input type="checkbox" id="{{ context.path }}"> {{ schema.title || schema.name }}'
                     +       '</label>'
                 +       '</div>'
 				+	'</div>',
-		scope: {
-			model: '=',
-			schema: '='
-		},
+		scope: hsfElementScope,
 		link: function postLink($scope, $element){
 			var input = $element.find('input');
 			$scope.model = false;

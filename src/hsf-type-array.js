@@ -2,7 +2,7 @@ angular.module('hsf.directives').config(function factory(hsfElementProvider) {
 	hsfElementProvider.register('array', 'hsf-type-array');
 });
 
-angular.module('hsf.directives').directive('hsfTypeArray', function factory($compile) {
+angular.module('hsf.directives').directive('hsfTypeArray', function factory($compile, hsfElementScope) {
 	return {
 		template:	'<fieldset>'
 				+		'<legend>'
@@ -11,10 +11,7 @@ angular.module('hsf.directives').directive('hsfTypeArray', function factory($com
 				+		'{{ schema.title }} '
 				+		'</legend>'
 				+	'</fieldset>',
-        scope: {
-			schema: '=',
-			model: '='
-		},
+        scope: hsfElementScope,
 		controller: function($scope, $element){
 
 			$scope.min = $scope.schema.min || 0;
@@ -23,8 +20,11 @@ angular.module('hsf.directives').directive('hsfTypeArray', function factory($com
 
 			$scope.add_element = function(){
 				if($scope.model.length < $scope.max){
+					// add the path so we can put useful identifiers on elements
+					$scope.subcontext = angular.copy($scope.context);
+					$scope.subcontext.path += '[' + $scope.model.length + ']';
 					// here we compile the template, with a static reference to the model element
-					var template = '<div hsf-element model="model[' + $scope.model.length + ']" schema="schema.fields"/>';
+					var template = '<div hsf-element model="model[' + $scope.model.length + ']" schema="schema.fields" context="subcontext"/>';
 					var compiled = $compile(template)($scope);
 					$element.append(compiled);
 					$scope.model.length++;
