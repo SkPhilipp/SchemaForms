@@ -13,6 +13,7 @@ angular.module('hsf.directives').directive('hsfTypeFile', function factory(hsfEl
 				+	'</div>',
 		scope: hsfElementScope,
 		link: function postLink($scope, $element){
+			var input = $element.find('input');
             input.bind('change', function(event){
 
 				var reader = new FileReader();

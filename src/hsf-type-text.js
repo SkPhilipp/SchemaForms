@@ -1,6 +1,5 @@
 angular.module('hsf.directives').config(function factory(hsfElementProvider) {
 	hsfElementProvider.register('text', 'hsf-type-text');
-	hsfElementProvider.register('json', 'hsf-type-text');
 });
 
 angular.module('hsf.directives').directive('hsfTypeText', function factory(hsfElementScope) {

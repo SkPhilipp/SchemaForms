@@ -1,6 +1,5 @@
 angular.module('hsf.directives').config(function factory(hsfElementProvider) {
-	hsfElementProvider.register('bool', 'hsf-type-checkbox');
-	hsfElementProvider.register('boolean', 'hsf-type-checkbox');
+	hsfElementProvider.register('checkbox', 'hsf-type-checkbox');
 });
 
 angular.module('hsf.directives').directive('hsfTypeCheckbox', function factory(hsfElementScope) {
