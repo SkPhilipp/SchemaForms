@@ -6,8 +6,8 @@ angular.module('hsf.directives').directive('hsfTypeArray', function factory($com
 	return {
 		template:	'<fieldset>'
 				+		'<legend>'
-				+		'<button class="btn" ng-click="add_element()" ng-disabled="model.length == max">Add</button> '
-				+		'<button class="btn" ng-click="remove_element()" ng-disabled="model.length == min">Remove</button> '
+				+		'<button class="btn btn-small" ng-click="add_element()" ng-disabled="model.length == max">Add</button> '
+				+		'<button class="btn btn-small" ng-click="remove_element()" ng-disabled="model.length == min">Remove</button> '
 				+		'{{ schema.title }} '
 				+		'</legend>'
 				+	'</fieldset>',
