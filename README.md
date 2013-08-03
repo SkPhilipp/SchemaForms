@@ -21,7 +21,7 @@ This is what it'll look like as a form:
 
 ![Sample schema rendered as a form](http://i.imgur.com/UXW6lsI.png)
 
-Then opon submit, your handler will receive what the user entered, in this example where nothing was entered you'd get
+Then upon submit, your handler will receive what the user entered, in this example where nothing was entered you'd get
 
 	[{"x":"","y":"","z":""},{"x":"","y":"","z":""}]
 
