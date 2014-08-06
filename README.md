@@ -1,6 +1,6 @@
 # SchemaForms
 
-_This GPL fork of the private SchemaForms project is no longer publicly maintained. Feel free to use it though, works fine, with exception of the few open issues._
+_Apache 2 licensed._
 
 Generates Bootstrap 3 compatible forms from schemas, the from's submit will send out JSON.
 
