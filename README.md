@@ -1,6 +1,6 @@
 # SchemaForms
 
-_Apache 2 licensed._
+_This project is no longer maintained and part of my source code "attic". Please use a [more mature and tested alternative](https://github.com/Textalk/angular-schema-form)._
 
 Generates Bootstrap 3 compatible forms from schemas, the from's submit will send out JSON.
 
